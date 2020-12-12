@@ -1,10 +1,7 @@
 import logo from './logo.svg'
 import './App.scss'
 
-import { example } from './utils'
-
 const App = () => {
-    example()
     return (
         <div className='App'>
             <header className='App-header'>
