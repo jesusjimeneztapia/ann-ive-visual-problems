@@ -2,14 +2,11 @@ import './Header.scss'
 
 import headerEyes from '../assets/images/header-eyes.png'
 
-const Header = () => {
+const Header = ({ title }) => {
     return (
         <header className='header'>
             <img className='header-img' src={headerEyes} alt='Header eyes' />
-            <h1 className='header-title'>
-                Diseño de un entorno virtual inteligente para la detección de problemas
-                visuales
-            </h1>
+            <h1 className='header-title'>{title}</h1>
         </header>
     )
 }
