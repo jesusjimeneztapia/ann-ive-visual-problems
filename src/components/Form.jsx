@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Form.scss'
 
+import Header from './Header'
 import Checkbox from './Checkbox'
 
 const Form = () => {
@@ -22,12 +23,10 @@ const Form = () => {
     }
     return (
         <>
-            <header className='header'>
-                <h1 className='header-title'>
-                    Diseño de un entorno virtual inteligente para la detección de
-                    problemas visuales
-                </h1>
-            </header>
+            <Header
+                title='Diseño de un entorno virtual inteligente para la detección de problemas
+                visuales'
+            />
             <main className='main'>
                 <form className='form' onSubmit={submit}>
                     <h2 className='form-title'>Anamnesis</h2>
