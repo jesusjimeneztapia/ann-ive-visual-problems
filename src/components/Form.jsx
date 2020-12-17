@@ -32,7 +32,7 @@ const Form = () => {
                     <h2 className='form-title'>Anamnesis</h2>
                     <section className='form-content'>
                         <label htmlFor='age' className='form-content-label'>
-                            Edad
+                            <span>*</span> Edad
                         </label>
                         <input
                             id='age'
@@ -49,70 +49,80 @@ const Form = () => {
                                 }
                             }}
                         />
+                        <small className='form-content-information'>
+                            La edad permitida es de 0-50 años.
+                        </small>
                     </section>
-                    <Checkbox
-                        id='blurred-vision-afar'
-                        label='Visión borrosa de lejos'
-                        setValue={setBlurredVisionAfar}
-                        value={blurredVisionAfar}
-                    />
-                    <Checkbox
-                        id='blurred-vision-close-up'
-                        label='Visión borrosa de cerca'
-                        setValue={setBlurredVisionCloseUp}
-                        value={blurredVisionCloseUp}
-                    />
-                    <Checkbox
-                        id='headache'
-                        label='Dolor de cabeza'
-                        setValue={setHeadache}
-                        value={headache}
-                    />
-                    <Checkbox
-                        id='eye-strain'
-                        label='Fatiga visual'
-                        setValue={setEyeStrain}
-                        value={eyeStrain}
-                    />
-                    <Checkbox
-                        id='mom-myopia'
-                        label='Mamá con miopía'
-                        setValue={setMomMyopia}
-                        value={momMyopia}
-                    />
-                    <Checkbox
-                        id='dad-myopia'
-                        label='Papá con miopía'
-                        setValue={setDadMyopia}
-                        value={dadMyopia}
-                    />
-                    <Checkbox
-                        id='mom-hyperopia'
-                        label='Mamá con hipermetropía'
-                        setValue={setMomHyperopia}
-                        value={momHyperopia}
-                    />
-                    <Checkbox
-                        id='dad-hyperopia'
-                        label='Papá con hipermetropía'
-                        setValue={setDadHyperopia}
-                        value={dadHyperopia}
-                    />
-                    <Checkbox
-                        id='mom-astigmatism'
-                        label='Mamá con astigmatismo'
-                        setValue={setMomAstigmatism}
-                        value={momAstigmatism}
-                    />
-                    <Checkbox
-                        id='dad-astigmatism'
-                        label='Papá con astigmatismo'
-                        setValue={setDadAstigmatism}
-                        value={dadAstigmatism}
-                    />
-                    <button className='form-submit' type='submit'>
-                        Diagnosticar
-                    </button>
+                    <article className='form-article'>
+                        <h3 className='form-article-title'>
+                            Seleccione las opciones que padece:
+                        </h3>
+                        <Checkbox
+                            id='blurred-vision-afar'
+                            label='Visión borrosa de lejos'
+                            setValue={setBlurredVisionAfar}
+                            value={blurredVisionAfar}
+                        />
+                        <Checkbox
+                            id='blurred-vision-close-up'
+                            label='Visión borrosa de cerca'
+                            setValue={setBlurredVisionCloseUp}
+                            value={blurredVisionCloseUp}
+                        />
+                        <Checkbox
+                            id='headache'
+                            label='Dolor de cabeza'
+                            setValue={setHeadache}
+                            value={headache}
+                        />
+                        <Checkbox
+                            id='eye-strain'
+                            label='Fatiga visual'
+                            setValue={setEyeStrain}
+                            value={eyeStrain}
+                        />
+                        <Checkbox
+                            id='mom-myopia'
+                            label='Mamá con miopía'
+                            setValue={setMomMyopia}
+                            value={momMyopia}
+                        />
+                        <Checkbox
+                            id='dad-myopia'
+                            label='Papá con miopía'
+                            setValue={setDadMyopia}
+                            value={dadMyopia}
+                        />
+                        <Checkbox
+                            id='mom-hyperopia'
+                            label='Mamá con hipermetropía'
+                            setValue={setMomHyperopia}
+                            value={momHyperopia}
+                        />
+                        <Checkbox
+                            id='dad-hyperopia'
+                            label='Papá con hipermetropía'
+                            setValue={setDadHyperopia}
+                            value={dadHyperopia}
+                        />
+                        <Checkbox
+                            id='mom-astigmatism'
+                            label='Mamá con astigmatismo'
+                            setValue={setMomAstigmatism}
+                            value={momAstigmatism}
+                        />
+                        <Checkbox
+                            id='dad-astigmatism'
+                            label='Papá con astigmatismo'
+                            setValue={setDadAstigmatism}
+                            value={dadAstigmatism}
+                        />
+                    </article>
+                    <div className='form-submit'>
+                        <button className='form-submit-button' type='submit'>
+                            Diagnosticar
+                        </button>
+                    </div>
                 </form>
             </main>
         </>
