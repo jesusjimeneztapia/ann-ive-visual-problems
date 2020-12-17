@@ -17,6 +17,7 @@ const Checkbox = ({ id, label, setValue, value }) => {
                 }}
             />
             <label htmlFor={id} className='checkbox-label'>
+                <span className='check' />
                 <h6>{label}</h6>
             </label>
         </section>
