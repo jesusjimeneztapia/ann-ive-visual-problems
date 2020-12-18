@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './Form.scss'
 
 import Header from './Header'
+import AgeInput from './AgeInput'
 import Checkbox from './Checkbox'
 import Alert from './Alert'
 
@@ -17,11 +18,15 @@ const Form = () => {
     const [dadHyperopia, setDadHyperopia] = useState(0)
     const [momAstigmatism, setMomAstigmatism] = useState(0)
     const [dadAstigmatism, setDadAstigmatism] = useState(0)
-    const [showAlert, setShowAlert] = useState(true)
+    const [showAlert, setShowAlert] = useState(false)
+    const [emptyOldField, setEmptyOldField] = useState(false)
 
     const submit = (e) => {
         e.preventDefault()
-        console.log('submit')
+        if (age === '') {
+            setShowAlert(true)
+            setEmptyOldField(true)
+        }
     }
     return (
         <>
@@ -32,29 +37,12 @@ const Form = () => {
             <main className='main'>
                 <form className='form' onSubmit={submit}>
                     <h2 className='form-title'>Anamnesis</h2>
-                    <section className='form-content'>
-                        <label htmlFor='age' className='form-content-label'>
-                            <span>*</span> Edad
-                        </label>
-                        <input
-                            id='age'
-                            type='number'
-                            min={0}
-                            max={50}
-                            className='form-content-input'
-                            value={age}
-                            onChange={({ target: { value } }) => {
-                                if (value === '') {
-                                    setAge(value)
-                                } else {
-                                    setAge(parseInt(value))
-                                }
-                            }}
-                        />
-                        <small className='form-content-information'>
-                            La edad permitida es de 0-50 años.
-                        </small>
-                    </section>
+                    <AgeInput
+                        age={age}
+                        setAge={setAge}
+                        invalid={emptyOldField}
+                        setInvalid={setEmptyOldField}
+                    />
                     <article className='form-article'>
                         <h3 className='form-article-title'>
                             Seleccione las opciones que padece:
@@ -130,6 +118,7 @@ const Form = () => {
                         setShow={setShowAlert}
                         title='Campos vacíos'
                         message='Verifique que el campo de la edad no se encuentre vacío.'
+                        delay={4000}
                     />
                 </form>
             </main>
