@@ -125,15 +125,14 @@ const Form = () => {
                             Diagnosticar
                         </button>
                     </div>
+                    <Alert
+                        show={showAlert}
+                        setShow={setShowAlert}
+                        title='Campos vacíos'
+                        message='Verifique que el campo de la edad no se encuentre vacío.'
+                    />
                 </form>
             </main>
-            <Alert
-                show={showAlert}
-                setShow={setShowAlert}
-                title='Alert'
-                message='Message'
-                delay={5000}
-            />
         </>
     )
 }
