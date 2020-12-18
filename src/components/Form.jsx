@@ -26,6 +26,21 @@ const Form = () => {
         if (age === '') {
             setShowAlert(true)
             setEmptyOldField(true)
+        } else {
+            const data = {
+                age,
+                blurredVisionAfar,
+                blurredVisionCloseUp,
+                headache,
+                eyeStrain,
+                momMyopia,
+                dadMyopia,
+                momHyperopia,
+                dadHyperopia,
+                momAstigmatism,
+                dadAstigmatism,
+            }
+            console.log(data)
         }
     }
     return (
