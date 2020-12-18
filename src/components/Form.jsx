@@ -3,6 +3,7 @@ import './Form.scss'
 
 import Header from './Header'
 import Checkbox from './Checkbox'
+import Alert from './Alert'
 
 const Form = () => {
     const [age, setAge] = useState(0)
@@ -16,6 +17,7 @@ const Form = () => {
     const [dadHyperopia, setDadHyperopia] = useState(0)
     const [momAstigmatism, setMomAstigmatism] = useState(0)
     const [dadAstigmatism, setDadAstigmatism] = useState(0)
+    const [showAlert, setShowAlert] = useState(true)
 
     const submit = (e) => {
         e.preventDefault()
@@ -125,6 +127,13 @@ const Form = () => {
                     </div>
                 </form>
             </main>
+            <Alert
+                show={showAlert}
+                setShow={setShowAlert}
+                title='Alert'
+                message='Message'
+                delay={5000}
+            />
         </>
     )
 }
