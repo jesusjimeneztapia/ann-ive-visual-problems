@@ -1,0 +1,77 @@
+@import '../sass/styles.scss';
+
+.checkbox {
+    font-family: sans-serif;
+    border-bottom: 1px solid $border-color;
+    color: $primary-color;
+
+    input {
+        display: none;
+
+        &:checked + label > span {
+            border: 1px solid $bg-color3;
+            background: url('../assets/images/check.svg'), $bg-color3;
+            background: url('../assets/images/check.svg'),
+                linear-gradient(to right, $bg-color1, $bg-color2, $bg-color3);
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            animation-name: checked;
+            animation-duration: 0.2s;
+        }
+    }
+
+    &-label {
+        display: flex;
+        align-items: center;
+
+        h6 {
+            font-weight: 400;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            @media #{$information-mobile} {
+                font-size: 1em;
+                margin: 0 0 0 1em;
+            }
+            @media #{$information-tablet} {
+                font-size: 1.2em;
+                margin: 0 0 0 1em;
+            }
+            @media #{$information-desktop} {
+                font-size: 1.4em;
+                margin: 0 0 0 1.2em;
+            }
+        }
+
+        .check {
+            position: relative;
+            padding: 0.7em;
+            border: 1px solid $border-color;
+            border-radius: 50%;
+
+            &:hover {
+                cursor: pointer;
+                border: 1px solid $primary-color;
+            }
+        }
+
+        @media #{$information-mobile} {
+            padding: 0.8em 1em;
+        }
+        @media #{$information-tablet} {
+            padding: 1em 1.2em;
+        }
+        @media #{$information-desktop} {
+            padding: 1.2em;
+        }
+    }
+}
+
+@keyframes checked {
+    0% {
+        transform: rotate(45deg);
+    }
+}
