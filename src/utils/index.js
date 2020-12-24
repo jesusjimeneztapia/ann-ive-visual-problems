@@ -1,3 +1,3 @@
-import example from './neuralNetwork'
+import { createModel } from './neuralNetwork'
 
-export { example }
+export { createModel }
