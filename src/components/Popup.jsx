@@ -1,13 +1,13 @@
 import './Popup.scss'
 
-const Popup = () => {
+const Popup = ({ title, description }) => {
     return (
         <div className='popup'>
-            <h2 className='popup-title'>Ojo con {'<Problema del ojo>'}</h2>
-            <p className='popup-description'>
-                Aquí estará la descripción del problema del ojo.
-            </p>
-            <a href='#'>Ver ojo</a>
+            <h2 className='popup-title'>{title}</h2>
+            <p className='popup-description'>{description}</p>
+            <div className='popup-link'>
+                <a href='#'>Ver comparación</a>
+            </div>
         </div>
     )
 }

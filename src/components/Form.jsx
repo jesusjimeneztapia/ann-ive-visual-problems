@@ -138,7 +138,10 @@ const Form = () => {
                     />
                 </form>
             </main>
-            <Popup />
+            <Popup
+                title='Ojo Hipermetropía'
+                description='Probablemente usted posee Hipermetropía, la visión cercana de los objetos se torna borroso o distorcionado para usted. Los rayos de la luz se enfocan después de la retina, debido a que la forma de su globo ocular se presenta más alargada verticalmente, no es totalmente esférica. Usted puede observar la comparación entre un ojo normal y uno con hipermetropía mediante una gráfica.'
+            />
         </>
     )
 }
