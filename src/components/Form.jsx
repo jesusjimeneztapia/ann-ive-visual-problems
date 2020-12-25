@@ -5,6 +5,7 @@ import Header from './Header'
 import AgeInput from './AgeInput'
 import Checkbox from './Checkbox'
 import Alert from './Alert'
+import Popup from './Popup'
 
 const Form = () => {
     const [age, setAge] = useState(0)
@@ -137,6 +138,7 @@ const Form = () => {
                     />
                 </form>
             </main>
+            <Popup />
         </>
     )
 }
