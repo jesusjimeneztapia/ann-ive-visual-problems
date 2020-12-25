@@ -1,6 +1,8 @@
 @import '../sass/styles.scss';
 
 $background: hsl(0, 0%, 98%);
+$text-color: #721c24;
+$exit-color: #b5797f;
 
 .popup {
     position: fixed;
@@ -13,26 +15,72 @@ $background: hsl(0, 0%, 98%);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.4),
         8px 8px 16px rgba(0, 0, 0, 0.4);
 
+    &.down {
+        animation-name: downAnimation;
+        animation-duration: 2s;
+
+        @keyframes downAnimation {
+            0% {
+                opacity: 64%;
+                top: -100%;
+            }
+        }
+    }
+    &.up {
+        opacity: 0;
+        top: -100%;
+        z-index: -1;
+
+        animation-name: upAnimation;
+        animation-duration: 1s;
+
+        @keyframes upAnimation {
+            0% {
+                z-index: 1;
+                opacity: 100%;
+                top: 0;
+            }
+        }
+    }
+
     * {
         padding: 0;
         margin: 0;
     }
 
-    &-title {
-        font-family: serif;
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         border-bottom: 1px solid $border-color;
+        padding-bottom: 0.4em;
 
-        @media #{$information-mobile} {
-            padding-bottom: 0.4em;
-            font-size: 1.2em;
+        svg {
+            path {
+                fill: rgba($primary-color, 0.4);
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                path {
+                    fill: $primary-color;
+                }
+            }
         }
-        @media #{$information-tablet} {
-            padding-bottom: 0.4em;
-            font-size: 1.4em;
-        }
-        @media #{$information-desktop} {
-            padding-bottom: 0.4em;
-            font-size: 2em;
+
+        &-title {
+            font-family: serif;
+
+            @media #{$information-mobile} {
+                font-size: 1.2em;
+            }
+            @media #{$information-tablet} {
+                font-size: 1.4em;
+            }
+            @media #{$information-desktop} {
+                font-size: 2em;
+            }
         }
     }
     &-description {
@@ -110,5 +158,12 @@ $background: hsl(0, 0%, 98%);
         width: 60%;
         margin-top: 8em;
         padding: 2.4em;
+    }
+}
+
+@keyframes animate {
+    0% {
+        opacity: 64%;
+        top: -100%;
     }
 }
