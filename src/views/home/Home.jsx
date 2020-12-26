@@ -1,3 +1,4 @@
+import { connect } from 'react-redux'
 import { useState } from 'react'
 import './Home.scss'
 
@@ -5,7 +6,9 @@ import Header from '../../components/Header'
 import { AgeInput } from './components'
 import { Alert, Checkbox, Popup } from '../../components'
 
-const Home = () => {
+import getResult, { getDefaultResult } from '../../store/actions/getResult'
+
+const Home = ({ result, getResult, getDefaultResult }) => {
     const [age, setAge] = useState(0)
     const [blurredVisionAfar, setBlurredVisionAfar] = useState(0)
     const [blurredVisionCloseUp, setBlurredVisionCloseUp] = useState(0)
@@ -27,16 +30,17 @@ const Home = () => {
             setShowPopup(false)
             setTimeout(() => {
                 setAge(0)
-                setBlurredVisionAfar(false)
-                setBlurredVisionCloseUp(false)
-                setHeadache(false)
-                setEyeStrain(false)
-                setMomMyopia(false)
-                setDadMyopia(false)
-                setMomHyperopia(false)
-                setDadHyperopia(false)
-                setMomAstigmatism(false)
-                setDadAstigmatism(false)
+                setBlurredVisionAfar(0)
+                setBlurredVisionCloseUp(0)
+                setHeadache(0)
+                setEyeStrain(0)
+                setMomMyopia(0)
+                setDadMyopia(0)
+                setMomHyperopia(0)
+                setDadHyperopia(0)
+                setMomAstigmatism(0)
+                setDadAstigmatism(0)
+                getDefaultResult()
             }, 800)
         }
     }
@@ -55,14 +59,11 @@ const Home = () => {
         if (firts) {
             return <></>
         }
-        const title = 'Ojo Hipermetropía'
-        const description =
-            'Probablemente usted posee Hipermetropía, la visión cercana de los objetos se torna borroso o distorcionado para usted. Los rayos de la luz se enfocan después de la retina, debido a que la forma de su globo ocular se presenta más alargada verticalmente, no es totalmente esférica. Usted puede observar la comparación entre un ojo normal y uno con hipermetropía mediante una gráfica.'
         if (showPopup) {
             return (
                 <Popup
-                    title={title}
-                    description={description}
+                    title={result.title}
+                    description={result.description}
                     exit={setPopup}
                     state='down'
                 />
@@ -70,8 +71,8 @@ const Home = () => {
         }
         return (
             <Popup
-                title={title}
-                description={description}
+                title={result.title}
+                description={result.description}
                 setShow={setShowPopup}
                 state='up'
             />
@@ -100,8 +101,10 @@ const Home = () => {
             console.log(data)
             setShowPopup(true)
             setFirts(false)
+            getResult(1)
         }
     }
+
     return (
         <>
             <div
@@ -208,4 +211,15 @@ const Home = () => {
     )
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    return {
+        result: state.result,
+    }
+}
+
+const mapDispatchTopProps = {
+    getDefaultResult,
+    getResult,
+}
+
+export default connect(mapStateToProps, mapDispatchTopProps)(Home)
