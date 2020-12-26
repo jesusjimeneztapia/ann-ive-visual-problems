@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { EYES } from '../constants/routeNames'
 import './Popup.scss'
 
 const Popup = ({ title, description, exit, state }) => {
@@ -18,7 +20,7 @@ const Popup = ({ title, description, exit, state }) => {
             </div>
             <p className='popup-description'>{description}</p>
             <div className='popup-link'>
-                <a href='#'>Ver comparación</a>
+                <Link to={EYES}>Ver comparación</Link>
             </div>
         </div>
     )
