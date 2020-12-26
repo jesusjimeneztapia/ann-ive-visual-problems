@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import './Form.scss'
+import './Home.scss'
 
-import Header from './Header'
-import AgeInput from './AgeInput'
-import Checkbox from './Checkbox'
-import Alert from './Alert'
-import Popup from './Popup'
+import Header from '../../components/Header'
+import { AgeInput } from './components'
+import { Alert, Checkbox, Popup } from '../../components'
 
-const Form = () => {
+const Home = () => {
     const [age, setAge] = useState(0)
     const [blurredVisionAfar, setBlurredVisionAfar] = useState(0)
     const [blurredVisionCloseUp, setBlurredVisionCloseUp] = useState(0)
@@ -210,4 +208,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export default Home
