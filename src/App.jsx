@@ -1,10 +1,10 @@
 import './App.scss'
-import { Form } from './components'
+import Home from './views/home'
 
 const App = () => {
     return (
         <>
-            <Form />
+            <Home />
         </>
     )
 }
