@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { EYES } from '../constants/routeNames'
 import './Popup.scss'
+import '../styles/styles.scss'
 
 const Popup = ({ title, description, exit, state }) => {
     return (
         <div className={`popup ${state}`}>
             <div className='popup-header'>
-                <h2 className='popup-header-title'>{title}</h2>
+                <h3 className='popup-header-title h3'>{title}</h3>
                 <svg
                     height='12'
                     viewBox='0 0 311 311.07733'
@@ -18,7 +19,7 @@ const Popup = ({ title, description, exit, state }) => {
                     <path d='m295.117188 311.078125c-4.097657 0-8.191407-1.558594-11.308594-4.695313l-279.082032-279.058593c-6.25-6.253907-6.25-16.386719 0-22.636719s16.382813-6.25 22.636719 0l279.058594 279.0625c6.25 6.25 6.25 16.382812 0 22.632812-3.136719 3.117188-7.230469 4.695313-11.304687 4.695313zm0 0' />
                 </svg>
             </div>
-            <p className='popup-description'>{description}</p>
+            <p className='popup-description p'>{description}</p>
             <div className='popup-link'>
                 <Link to={EYES}>Ver comparación</Link>
             </div>

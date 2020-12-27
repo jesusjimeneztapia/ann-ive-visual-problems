@@ -66,34 +66,19 @@
 
         &-title {
             color: $dark-blue-color;
-            font-family: serif;
-
-            @media #{$information-mobile} {
-                font-size: 1.2em;
-            }
-            @media #{$information-tablet} {
-                font-size: 1.4em;
-            }
-            @media #{$information-desktop} {
-                font-size: 2em;
-            }
         }
     }
     &-description {
         color: $dark-blue-color;
-        font-family: sans-serif;
 
         @media #{$information-mobile} {
             padding-top: 0.4em;
-            font-size: 1em;
         }
         @media #{$information-tablet} {
             padding-top: 0.4em;
-            font-size: 1.2em;
         }
         @media #{$information-desktop} {
             padding-top: 0.4em;
-            font-size: 1.4em;
         }
     }
     &-link {
@@ -110,17 +95,14 @@
             }
 
             @media #{$information-mobile} {
-                font-size: 0.8em;
                 padding: 0.6em 1.2em;
                 border-radius: 1.6em;
             }
             @media #{$information-tablet} {
-                font-size: 1em;
                 padding: 0.6em 1.4em;
                 border-radius: 1.8em;
             }
             @media #{$information-desktop} {
-                font-size: 1.2em;
                 padding: 0.6em 1.8em;
                 border-radius: 1.8em;
             }

@@ -11,3 +11,18 @@ body {
 a {
     color: $blue-color;
 }
+
+a,
+button {
+    font-family: 'Roboto', sans-serif;
+
+    @media #{$information-mobile} {
+        font-size: 0.8em;
+    }
+    @media #{$information-tablet} {
+        font-size: 1em;
+    }
+    @media #{$information-desktop} {
+        font-size: 1.2em;
+    }
+}

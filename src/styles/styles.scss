@@ -1,3 +1,6 @@
+//@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=EB+Garamond:ital@0;1&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Roboto&display=swap');
+
 // screens
 $information-mobile: '(max-width: 479px)';
 $information-tablet: '(min-width: 480px) and (max-width: 1023px)';
@@ -18,3 +21,100 @@ $light-red-color: #eac4c7;
 $red-color: #b5797f;
 $dark-red-color: #721c24;
 $danger-color: #dc3545;
+
+.h1 {
+    font-family: 'Arvo', serif;
+    font-weight: 700;
+
+    @media #{$information-mobile} {
+        font-size: 1.6em;
+    }
+    @media #{$information-tablet} {
+        font-size: 2.4em;
+    }
+    @media #{$information-desktop} {
+        font-size: 3.2em;
+    }
+}
+.h2 {
+    font-family: 'Arvo', serif;
+    font-weight: 700;
+
+    @media #{$information-mobile} {
+        font-size: 1.4em;
+    }
+    @media #{$information-tablet} {
+        font-size: 1.8em;
+    }
+    @media #{$information-desktop} {
+        font-size: 2.4em;
+    }
+}
+.h3 {
+    font-family: 'Arvo', serif;
+    font-weight: 700;
+
+    @media #{$information-mobile} {
+        font-size: 1.2em;
+    }
+    @media #{$information-tablet} {
+        font-size: 1.4em;
+    }
+    @media #{$information-desktop} {
+        font-size: 2em;
+    }
+}
+.h4 {
+    font-family: 'Arvo', serif;
+    font-weight: 700;
+
+    @media #{$information-mobile} {
+        font-size: 1em;
+    }
+    @media #{$information-tablet} {
+        font-size: 1.2em;
+    }
+    @media #{$information-desktop} {
+        font-size: 1.4em;
+    }
+}
+.h5 {
+    font-family: 'Arvo', serif;
+    font-weight: 400;
+
+    @media #{$information-mobile} {
+        font-size: 1em;
+    }
+    @media #{$information-tablet} {
+        font-size: 1.2em;
+    }
+    @media #{$information-desktop} {
+        font-size: 1.4em;
+    }
+}
+.p {
+    font-family: 'EB Garamond', serif;
+
+    @media #{$information-mobile} {
+        font-size: 1em;
+    }
+    @media #{$information-tablet} {
+        font-size: 1.2em;
+    }
+    @media #{$information-desktop} {
+        font-size: 1.4em;
+    }
+}
+.small {
+    font-family: 'EB Garamond', serif;
+
+    @media #{$information-mobile} {
+        font-size: 0.8em;
+    }
+    @media #{$information-tablet} {
+        font-size: 1em;
+    }
+    @media #{$information-desktop} {
+        font-size: 1.2em;
+    }
+}
