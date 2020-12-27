@@ -1,0 +1,113 @@
+@import '../../styles/styles.scss';
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: $dark-blue-color;
+    display: grid;
+    overflow: hidden;
+
+    .code,
+    .title,
+    .lost,
+    .message,
+    .link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+    }
+
+    .code {
+        p {
+            color: $danger-color;
+        }
+
+        @media #{$information-mobile} {
+            grid-area: 5 / 3 / 6 / 4;
+        }
+        @media #{$information-tablet} {
+            grid-area: 7 / 4 / 8 / 5;
+        }
+        @media #{$information-desktop} {
+            grid-area: 1 / 5 / 2 / 7;
+        }
+    }
+    .title {
+        color: $light-color;
+
+        @media #{$information-mobile} {
+            grid-area: 6 / 2 / 7 / 5;
+        }
+        @media #{$information-tablet} {
+            grid-area: 8 / 3 / 9 / 6;
+        }
+        @media #{$information-desktop} {
+            grid-area: 2 / 2 / 3 / 6;
+        }
+    }
+    .lost {
+        height: 100%;
+
+        img {
+            width: 100%;
+        }
+
+        @media #{$information-mobile} {
+            grid-area: 7 / 2 / 11 / 5;
+        }
+        @media #{$information-tablet} {
+            grid-area: 9 / 2 / 16 / 7;
+        }
+        @media #{$information-desktop} {
+            grid-area: 3 / 2 / 10 / 8;
+        }
+    }
+    .message {
+        color: $light-gray-color;
+
+        @media #{$information-mobile} {
+            grid-area: 11 / 2 / 12 / 5;
+        }
+        @media #{$information-tablet} {
+            grid-area: 16 / 3 / 17 / 6;
+        }
+        @media #{$information-desktop} {
+            grid-area: 3 / 5 / 5 / 10;
+        }
+    }
+    .link {
+        text-decoration: none;
+        border: 1px solid $blue-color;
+        border-radius: 1em;
+        &:hover {
+            cursor: pointer;
+            color: $light-color;
+            background-color: $blue-color;
+        }
+
+        @media #{$information-mobile} {
+            grid-area: 13 / 3 / 14 / 4;
+        }
+        @media #{$information-tablet} {
+            grid-area: 18 / 4 / 19 / 5;
+        }
+        @media #{$information-desktop} {
+            grid-area: 5 / 7 / 6 / 8;
+        }
+    }
+
+    @media #{$information-mobile} {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(20, 1fr);
+    }
+    @media #{$information-tablet} {
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(24, 1fr);
+    }
+    @media #{$information-desktop} {
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+    }
+}
