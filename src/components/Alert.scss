@@ -1,16 +1,15 @@
 @import '../styles/styles.scss';
 
-$background: #eac4c7;
-$text-color: #721c24;
-$exit-color: #b5797f;
-
 .alert {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    background-color: $background;
+    background-color: $light-red-color;
     border-radius: 0.2em;
-    color: $text-color;
+
+    * {
+        color: $dark-red-color;
+    }
 
     &-header {
         display: flex;
@@ -19,13 +18,13 @@ $exit-color: #b5797f;
 
         svg {
             path {
-                fill: $exit-color;
+                fill: $red-color;
             }
 
             &:hover {
                 cursor: pointer;
                 path {
-                    fill: $text-color;
+                    fill: $dark-red-color;
                 }
             }
         }

@@ -7,8 +7,8 @@
     flex-direction: column;
     position: relative;
     max-width: 100%;
-    background: $bg-color3;
-    background: linear-gradient(to right, $bg-color1, $bg-color2, $bg-color3);
+    border-bottom: 1px solid rgba($light-color, 0.4);
+    background: $dark-blue-color;
     max-height: 50vh;
     overflow: hidden;
     text-align: center;
@@ -17,15 +17,6 @@
 
     img {
         max-width: 100%;
-        @media #{$information-mobile} {
-            opacity: 16%;
-        }
-        @media #{$information-tablet} {
-            opacity: 24%;
-        }
-        @media #{$information-desktop} {
-            opacity: 32%;
-        }
     }
 
     &-title {
@@ -34,7 +25,7 @@
         font-family: serif;
         margin: 0;
         position: absolute;
-        color: $primary-color;
+        color: $light-color;
         text-shadow: 1px 1px #000000, 2px 2px 4px rgba(0, 0, 0, 0.8),
             4px 4px 16px rgba(0, 0, 0, 0.4);
 
@@ -53,14 +44,17 @@
     }
 
     @media #{$information-mobile} {
+        background: radial-gradient($blue-color 64%, $dark-blue-color);
         min-height: 32vh;
         padding: 0.4em;
     }
     @media #{$information-tablet} {
+        background: radial-gradient($blue-color 48%, $dark-blue-color);
         min-height: 36vh;
         padding: 1em;
     }
     @media #{$information-desktop} {
+        background: radial-gradient($blue-color, $dark-blue-color);
         min-height: 50vh;
         padding: 2em;
     }

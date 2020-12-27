@@ -3,14 +3,18 @@ $information-mobile: '(max-width: 479px)';
 $information-tablet: '(min-width: 480px) and (max-width: 1023px)';
 $information-desktop: '(min-width: 1024px)';
 
-// background colors
-$bg-color1: #a6ffcb;
-$bg-color2: #12d8fa;
-$bg-color3: #1fa2ff;
+// background color
+$background: #e4e5f1;
 
-// text colors
-$primary-color: #0d075c;
-$secondary-color: #dd70b1;
-
-// border colors
+// border color
 $border-color: hsl(236, 9%, 61%);
+
+// colors
+$light-color: #f9f7f7;
+$light-gray-color: #dbe2ef;
+$blue-color: #3f72af;
+$dark-blue-color: #112d4e;
+$light-red-color: #eac4c7;
+$red-color: #b5797f;
+$dark-red-color: #721c24;
+$danger-color: #dc3545;
