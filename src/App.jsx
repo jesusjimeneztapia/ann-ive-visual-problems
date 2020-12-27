@@ -6,8 +6,13 @@ import HomeView from './views/home'
 import EyesView from './views/eyes'
 import NotFoundView from './views/not-found'
 import { HOME, EYES, NOT_FOUND } from './constants/routeNames'
+import { train } from './utils'
+import { useEffect } from 'react'
 
 const App = () => {
+    useEffect(() => {
+        train()
+    }, [])
     return (
         <Provider store={store}>
             <Router>

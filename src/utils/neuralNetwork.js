@@ -1,4 +1,5 @@
 import * as tf from '@tensorflow/tfjs'
+import { inputs, outputs } from '../constants/trainingData'
 
 let model
 
@@ -28,4 +29,18 @@ const createModel = () => {
     model.compile(compileConfig)
 }
 
-export { createModel }
+const train = async () => {
+    const trainConfig = {
+        epochs: 500,
+    }
+
+    const inputTensor = tf.tensor2d(inputs)
+    const outputTensor = tf.tensor2d(outputs)
+
+    const h = await model.fit(inputTensor, outputTensor, trainConfig)
+    console.log(h.history.loss[h.history.loss.length - 1])
+}
+
+createModel()
+
+export { train }

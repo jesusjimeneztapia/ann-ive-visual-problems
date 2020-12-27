@@ -1,3 +1,3 @@
-import { createModel } from './neuralNetwork'
+import { train } from './neuralNetwork'
 
-export { createModel }
+export { train }
