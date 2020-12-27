@@ -1,5 +1,13 @@
-$background: hsl(236, 33%, 92%);
+@import './styles/styles.scss';
+
+* {
+    color: $dark-blue-color;
+}
 
 body {
     background-color: $background;
+}
+
+a {
+    color: $blue-color;
 }

@@ -1,16 +1,13 @@
 @import '../../styles/styles.scss';
 
-$background: hsl(0, 0%, 98%);
-
 .main {
     max-width: 100vw;
     display: flex;
     justify-content: center;
-    color: $primary-color;
 }
 
 .form {
-    background-color: $background;
+    background-color: $light-color;
     border-radius: 2em;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.4),
         8px 8px 16px rgba(0, 0, 0, 0.4);
@@ -40,7 +37,7 @@ $background: hsl(0, 0%, 98%);
             font-family: serif;
             font-weight: 700;
             margin: 0;
-            color: $secondary-color;
+            color: $blue-color;
 
             @media #{$information-mobile} {
                 font-size: 1em;
@@ -61,34 +58,35 @@ $background: hsl(0, 0%, 98%);
         justify-content: center;
 
         &-button {
+            border-radius: 0.8em;
             font-family: sans-serif;
             font-weight: 600;
-            color: $primary-color;
-            border: 1px solid $border-color;
+            color: $light-gray-color;
+            border: 1px solid $blue-color;
 
-            background: $bg-color3;
-            background: linear-gradient(to right, $bg-color1, $bg-color2, $bg-color3);
+            background-color: $dark-blue-color;
             box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.4),
                 4px 4px 8px rgba(0, 0, 0, 0.4);
 
             &:hover {
                 cursor: pointer;
+                color: $light-color;
             }
 
             @media #{$information-mobile} {
                 font-size: 1em;
                 padding: 0.4em 0.8em;
-                border-radius: 1em;
+                //border-radius: 1em;
             }
             @media #{$information-tablet} {
                 font-size: 1.2em;
                 padding: 0.6em 1em;
-                border-radius: 1.2em;
+                //border-radius: 1.2em;
             }
             @media #{$information-desktop} {
                 font-size: 1.4em;
                 padding: 0.6em 1em;
-                border-radius: 1.4em;
+                //border-radius: 1.4em;
             }
         }
 

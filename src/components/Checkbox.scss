@@ -3,16 +3,20 @@
 .checkbox {
     font-family: sans-serif;
     border-bottom: 1px solid $border-color;
-    color: $primary-color;
 
     input {
         display: none;
 
         &:checked + label > span {
-            border: 1px solid $bg-color3;
-            background: url('../assets/images/check.svg'), $bg-color3;
+            border: 1px solid $dark-blue-color;
+            background: url('../assets/images/check.svg'), $dark-blue-color;
             background: url('../assets/images/check.svg'),
-                linear-gradient(to right, $bg-color1, $bg-color2, $bg-color3);
+                linear-gradient(
+                    135deg,
+                    $light-gray-color 4%,
+                    $blue-color,
+                    $dark-blue-color
+                );
             background-repeat: no-repeat;
             background-position: center center;
 
@@ -49,12 +53,12 @@
         .check {
             position: relative;
             padding: 0.7em;
-            border: 1px solid $border-color;
+            border: 1px solid $blue-color;
             border-radius: 50%;
 
             &:hover {
                 cursor: pointer;
-                border: 1px solid $primary-color;
+                border: 1px solid $dark-blue-color;
             }
         }
 

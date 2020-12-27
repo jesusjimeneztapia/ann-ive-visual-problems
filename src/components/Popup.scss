@@ -1,16 +1,11 @@
 @import '../styles/styles.scss';
 
-$background: hsl(0, 0%, 98%);
-$text-color: #721c24;
-$exit-color: #b5797f;
-
 .popup {
     position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    color: $primary-color;
-    background-color: $background;
+    background-color: $light-gray-color;
     border-radius: 0.4em;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.4),
         8px 8px 16px rgba(0, 0, 0, 0.4);
@@ -57,19 +52,20 @@ $exit-color: #b5797f;
 
         svg {
             path {
-                fill: rgba($primary-color, 0.4);
+                fill: rgba($dark-blue-color, 0.4);
             }
 
             &:hover {
                 cursor: pointer;
 
                 path {
-                    fill: $primary-color;
+                    fill: $dark-blue-color;
                 }
             }
         }
 
         &-title {
+            color: $dark-blue-color;
             font-family: serif;
 
             @media #{$information-mobile} {
@@ -84,6 +80,7 @@ $exit-color: #b5797f;
         }
     }
     &-description {
+        color: $dark-blue-color;
         font-family: sans-serif;
 
         @media #{$information-mobile} {
@@ -104,13 +101,12 @@ $exit-color: #b5797f;
 
         a {
             text-decoration: none;
-            color: $bg-color3;
-            border: 1px solid $bg-color3;
+            color: $blue-color;
+            border: 1px solid $blue-color;
 
             &:hover {
-                //border: none;
-                background-color: $bg-color3;
-                color: $background;
+                background-color: $blue-color;
+                color: $light-color;
             }
 
             @media #{$information-mobile} {
