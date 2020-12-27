@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { useState } from 'react'
 import './Home.scss'
+import '../../styles/styles.scss'
 
 import Header from '../../components/Header'
 import { AgeInput } from './components'
@@ -119,7 +120,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 />
                 <main className='main'>
                     <form className='form' onSubmit={submit}>
-                        <h2 className='form-title'>Anamnesis</h2>
+                        <h2 className='form-title h2'>Anamnesis</h2>
                         <AgeInput
                             age={age}
                             setAge={setAge}
@@ -127,7 +128,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                             setInvalid={setEmptyOldField}
                         />
                         <article className='form-article'>
-                            <h3 className='form-article-title'>
+                            <h3 className='form-article-title h4'>
                                 Seleccione las opciones que padece:
                             </h3>
                             <Checkbox

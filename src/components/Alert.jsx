@@ -1,4 +1,5 @@
 import './Alert.scss'
+import '../styles/styles.scss'
 
 const Alert = ({ title, message, show, setShow, delay }) => {
     const exit = () => {
@@ -14,7 +15,7 @@ const Alert = ({ title, message, show, setShow, delay }) => {
         return (
             <div className='alert'>
                 <div className='alert-header'>
-                    <h6 className='alert-header-title'>{title}</h6>
+                    <h3 className='alert-header-title h3'>{title}</h3>
                     <svg
                         height='12'
                         viewBox='0 0 311 311.07733'
@@ -27,7 +28,7 @@ const Alert = ({ title, message, show, setShow, delay }) => {
                     </svg>
                 </div>
                 <div className='alert-body'>
-                    <p className='alert-body-message'>{message}</p>
+                    <p className='alert-body-message p'>{message}</p>
                 </div>
             </div>
         )

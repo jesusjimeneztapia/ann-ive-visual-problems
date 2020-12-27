@@ -22,7 +22,6 @@
     &-title {
         top: 50%;
         transform: translateY(-50%);
-        font-family: serif;
         margin: 0;
         position: absolute;
         color: $light-color;
@@ -30,15 +29,12 @@
             4px 4px 16px rgba(0, 0, 0, 0.4);
 
         @media #{$information-mobile} {
-            font-size: 1.6em;
             margin: 0 0.4em;
         }
         @media #{$information-tablet} {
-            font-size: 2.4em;
             margin: 0 1em;
         }
         @media #{$information-desktop} {
-            font-size: 3.2em;
             margin: 0 2em;
         }
     }

@@ -31,16 +31,6 @@
 
         &-title {
             margin: 0;
-
-            @media #{$information-mobile} {
-                font-size: 1.2em;
-            }
-            @media #{$information-tablet} {
-                font-size: 1.4em;
-            }
-            @media #{$information-desktop} {
-                font-size: 1.8em;
-            }
         }
     }
     &-body {
@@ -48,15 +38,12 @@
             margin: 0;
         }
         @media #{$information-mobile} {
-            font-size: 1em;
             margin-top: 0.6em;
         }
         @media #{$information-tablet} {
-            font-size: 1.2em;
             margin-top: 0.8em;
         }
         @media #{$information-desktop} {
-            font-size: 1.4em;
             margin-top: 1em;
         }
     }

@@ -29,7 +29,7 @@
         display: flex;
         align-items: center;
 
-        h6 {
+        p {
             font-weight: 400;
 
             &:hover {
@@ -37,15 +37,12 @@
             }
 
             @media #{$information-mobile} {
-                font-size: 1em;
                 margin: 0 0 0 1em;
             }
             @media #{$information-tablet} {
-                font-size: 1.2em;
                 margin: 0 0 0 1em;
             }
             @media #{$information-desktop} {
-                font-size: 1.4em;
                 margin: 0 0 0 1.2em;
             }
         }

@@ -13,43 +13,34 @@
         8px 8px 16px rgba(0, 0, 0, 0.4);
 
     &-title {
-        font-family: serif;
         margin: 0;
         text-align: center;
         text-shadow: 1px 1px 1px #000000, 2px 2px 4px rgba(0, 0, 0, 0.8);
         letter-spacing: 1px;
 
         @media #{$information-mobile} {
-            font-size: 1.4em;
             padding: 0.8em 0;
         }
         @media #{$information-tablet} {
-            font-size: 1.8em;
             padding: 1em 0;
         }
         @media #{$information-desktop} {
-            font-size: 2.4em;
             padding: 1.2em 0;
         }
     }
     &-article {
         &-title {
-            font-family: serif;
-            font-weight: 700;
             margin: 0;
             color: $blue-color;
 
             @media #{$information-mobile} {
-                font-size: 1em;
                 padding: 1em 1em 0 1em;
             }
             @media #{$information-tablet} {
-                font-size: 1.2em;
-                padding: 1em 1.2em 0 1.2em;
+                padding: 1em 1em 0 1em;
             }
             @media #{$information-desktop} {
-                font-size: 1.4em;
-                padding: 1.2em 1.2em 0 1.2em;
+                padding: 1.2em 1em 0 1em;
             }
         }
     }
@@ -74,19 +65,13 @@
             }
 
             @media #{$information-mobile} {
-                font-size: 1em;
                 padding: 0.4em 0.8em;
-                //border-radius: 1em;
             }
             @media #{$information-tablet} {
-                font-size: 1.2em;
                 padding: 0.6em 1em;
-                //border-radius: 1.2em;
             }
             @media #{$information-desktop} {
-                font-size: 1.4em;
                 padding: 0.6em 1em;
-                //border-radius: 1.4em;
             }
         }
 

@@ -1,8 +1,9 @@
 import './AgeInput.scss'
+import '../../../styles/styles.scss'
 
 const AgeInput = ({ age, setAge, invalid, setInvalid }) => {
     const getClass = () => {
-        let className = 'age-input'
+        let className = 'age-input p'
         if (invalid) {
             className = `${className} invalid`
         }
@@ -10,7 +11,7 @@ const AgeInput = ({ age, setAge, invalid, setInvalid }) => {
     }
     return (
         <section className='age'>
-            <label htmlFor='age' className='age-label'>
+            <label htmlFor='age' className='age-label p'>
                 <span>*</span> Edad
             </label>
             <input
@@ -31,9 +32,13 @@ const AgeInput = ({ age, setAge, invalid, setInvalid }) => {
                     setInvalid(false)
                 }}
             />
-            <small className='age-information'>La edad permitida es de 0-50 años.</small>
+            <small className='age-information small'>
+                La edad permitida es de 0-50 años.
+            </small>
             {invalid ? (
-                <small className='age-invalid'>Este campo no puede estar vacío.</small>
+                <small className='age-invalid small'>
+                    Este campo no puede estar vacío.
+                </small>
             ) : (
                 <></>
             )}

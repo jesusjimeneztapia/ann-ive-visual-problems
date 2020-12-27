@@ -1,4 +1,5 @@
 import './Checkbox.scss'
+import '../styles/styles.scss'
 
 const Checkbox = ({ id, label, setValue, value }) => {
     return (
@@ -18,7 +19,7 @@ const Checkbox = ({ id, label, setValue, value }) => {
             />
             <label htmlFor={id} className='checkbox-label'>
                 <span className='check' />
-                <h6>{label}</h6>
+                <p className='p'>{label}</p>
             </label>
         </section>
     )
