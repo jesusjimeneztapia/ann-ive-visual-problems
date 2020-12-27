@@ -3,11 +3,16 @@ import * as tf from '@tensorflow/tfjs'
 let model
 
 const createModel = () => {
-    /*
-        <---- Space to create model and hidden layer ---->
-    */
+    model = tf.sequential()
 
-    // output layer
+    const hiddenConfig = {
+        units: 10,
+        inputShape: [12],
+        activation: 'sigmoid',
+    }
+    const hiddenLayer = tf.layers.dense(hiddenConfig)
+    model.add(hiddenLayer)
+
     const outputConfig = {
         units: 4,
         inputShape: [10],
@@ -16,7 +21,6 @@ const createModel = () => {
     const outputLayer = tf.layers.dense(outputConfig)
     model.add(outputLayer)
 
-    // compile
     const compileConfig = {
         optimizer: 'sgd',
         loss: 'meanSquaredError',
