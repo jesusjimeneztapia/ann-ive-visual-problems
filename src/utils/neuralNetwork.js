@@ -1,27 +1,90 @@
 import * as tf from '@tensorflow/tfjs'
+import { inputs, outputs } from '../constants/trainingData'
 
 let model
 
 const createModel = () => {
-    /*
-        <---- Space to create model and hidden layer ---->
-    */
+    model = tf.sequential()
 
-    // output layer
+    const hiddenConfig = {
+        units: 10,
+        inputShape: [12],
+        activation: 'sigmoid',
+    }
+    const hiddenLayer = tf.layers.dense(hiddenConfig)
+    model.add(hiddenLayer)
+
     const outputConfig = {
         units: 4,
         inputShape: [10],
-        activation: 'sigmoid',
+        activation: 'softmax',
     }
     const outputLayer = tf.layers.dense(outputConfig)
     model.add(outputLayer)
 
-    // compile
+    const learningRate = 0.1
+    const optimizer = tf.train.adam(learningRate)
     const compileConfig = {
-        optimizer: 'sgd',
-        loss: 'meanSquaredError',
+        optimizer: optimizer,
+        loss: 'categoricalCrossentropy',
+        metrics: ['accuracy'],
     }
     model.compile(compileConfig)
 }
 
-export { createModel }
+const train = async (ok) => {
+    const trainConfig = {
+        epochs: 64,
+    }
+
+    const inputTensor = tf.tensor2d(inputs)
+    const outputTensor = tf.tensor2d(outputs)
+
+    const h = await model.fit(inputTensor, outputTensor, trainConfig)
+    ok(true)
+    console.log(h.history.loss[h.history.loss.length - 1])
+}
+
+const predict = async ({
+    age,
+    blurredVisionAfar,
+    blurredVisionCloseUp,
+    headache,
+    eyeStrain,
+    momMyopia,
+    dadMyopia,
+    momHyperopia,
+    dadHyperopia,
+    momAstigmatism,
+    dadAstigmatism,
+}) => {
+    let data = []
+    if (age < 13) {
+        data = [1, 0]
+    } else {
+        data = [0, 1]
+    }
+    data = data.concat([
+        blurredVisionAfar,
+        blurredVisionCloseUp,
+        headache,
+        eyeStrain,
+        momMyopia,
+        dadMyopia,
+        momHyperopia,
+        dadHyperopia,
+        momAstigmatism,
+        dadAstigmatism,
+    ])
+
+    const prediction = model.predict(tf.tensor2d([data]))
+    data = await prediction.data()
+    const max = Math.max(...data)
+    const index = data.indexOf(max)
+
+    return index
+}
+
+createModel()
+
+export { train, predict }

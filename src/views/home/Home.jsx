@@ -8,6 +8,7 @@ import { AgeInput } from './components'
 import { Alert, Checkbox, Popup } from '../../components'
 
 import getResult, { getDefaultResult } from '../../store/actions/getResult'
+import { predict } from '../../utils'
 
 const Home = ({ result, getResult, getDefaultResult }) => {
     const [age, setAge] = useState(0)
@@ -80,7 +81,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
         )
     }
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault()
         if (age === '') {
             setShowAlert(true)
@@ -99,10 +100,10 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 momAstigmatism,
                 dadAstigmatism,
             }
-            console.log(data)
+            const index = await predict(data)
+            getResult(index)
             setShowPopup(true)
             setFirts(false)
-            getResult(1)
         }
     }
 
