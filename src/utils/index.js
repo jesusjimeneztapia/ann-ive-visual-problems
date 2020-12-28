@@ -1,3 +1,3 @@
-import { train } from './neuralNetwork'
+import { train, predict } from './neuralNetwork'
 
-export { train }
+export { train, predict }

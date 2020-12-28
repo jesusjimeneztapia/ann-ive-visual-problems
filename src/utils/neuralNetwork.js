@@ -17,30 +17,74 @@ const createModel = () => {
     const outputConfig = {
         units: 4,
         inputShape: [10],
-        activation: 'sigmoid',
+        activation: 'softmax',
     }
     const outputLayer = tf.layers.dense(outputConfig)
     model.add(outputLayer)
 
+    const learningRate = 0.1
+    const optimizer = tf.train.adam(learningRate)
     const compileConfig = {
-        optimizer: 'sgd',
-        loss: 'meanSquaredError',
+        optimizer: optimizer,
+        loss: 'categoricalCrossentropy',
+        metrics: ['accuracy'],
     }
     model.compile(compileConfig)
 }
 
-const train = async () => {
+const train = async (ok) => {
     const trainConfig = {
-        epochs: 500,
+        epochs: 64,
     }
 
     const inputTensor = tf.tensor2d(inputs)
     const outputTensor = tf.tensor2d(outputs)
 
     const h = await model.fit(inputTensor, outputTensor, trainConfig)
+    ok(true)
     console.log(h.history.loss[h.history.loss.length - 1])
+}
+
+const predict = async ({
+    age,
+    blurredVisionAfar,
+    blurredVisionCloseUp,
+    headache,
+    eyeStrain,
+    momMyopia,
+    dadMyopia,
+    momHyperopia,
+    dadHyperopia,
+    momAstigmatism,
+    dadAstigmatism,
+}) => {
+    let data = []
+    if (age < 13) {
+        data = [1, 0]
+    } else {
+        data = [0, 1]
+    }
+    data = data.concat([
+        blurredVisionAfar,
+        blurredVisionCloseUp,
+        headache,
+        eyeStrain,
+        momMyopia,
+        dadMyopia,
+        momHyperopia,
+        dadHyperopia,
+        momAstigmatism,
+        dadAstigmatism,
+    ])
+
+    const prediction = model.predict(tf.tensor2d([data]))
+    data = await prediction.data()
+    const max = Math.max(...data)
+    const index = data.indexOf(max)
+
+    return index
 }
 
 createModel()
 
-export { train }
+export { train, predict }
