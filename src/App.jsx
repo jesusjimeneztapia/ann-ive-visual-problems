@@ -14,24 +14,25 @@ const App = () => {
     const [trained, setTrained] = useState(false)
     useEffect(() => {
         if (!trained) {
-            //train(setTrained)
+            train(setTrained)
         }
     }, [trained])
     return (
         <Provider store={store}>
             <Router>
                 <Switch>
-                    {/*<Route
-                        path={HOME}
-                        component={() => {
-                            if (trained) {
-                                return <HomeView />
-                            }
-                            return <LoadingView />
-                        }}
-                        exact
-                    />*/}
-                    <Route path={HOME} component={LoadingView} exact />
+                    {
+                        <Route
+                            path={HOME}
+                            component={() => {
+                                if (trained) {
+                                    return <HomeView />
+                                }
+                                return <LoadingView />
+                            }}
+                            exact
+                        />
+                    }
                     <Route path={EYES} component={EyesView} exact />
                     <Route path={NOT_FOUND} component={NotFoundView} exact />
                     <Redirect from='*' to={NOT_FOUND} />
