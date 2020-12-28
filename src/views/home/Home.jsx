@@ -5,7 +5,7 @@ import '../../styles/styles.scss'
 
 import Header from '../../components/Header'
 import { AgeInput } from './components'
-import { Alert, Checkbox, Popup } from '../../components'
+import { Alert, Checkbox, Popup, Select } from '../../components'
 
 import getResult, { getDefaultResult } from '../../store/actions/getResult'
 import { predict } from '../../utils'
@@ -192,6 +192,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                                 setValue={setDadAstigmatism}
                                 value={dadAstigmatism}
                             />
+                            <Select />
                         </article>
                         <div className='form-submit'>
                             <button className='form-submit-button' type='submit'>
