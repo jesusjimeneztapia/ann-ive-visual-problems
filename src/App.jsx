@@ -5,6 +5,7 @@ import store from './store'
 import HomeView from './views/home'
 import EyesView from './views/eyes'
 import NotFoundView from './views/not-found'
+import LoadingView from './views/loading'
 import { HOME, EYES, NOT_FOUND } from './constants/routeNames'
 import { train } from './utils'
 import { useEffect, useState } from 'react'
@@ -20,16 +21,18 @@ const App = () => {
         <Provider store={store}>
             <Router>
                 <Switch>
-                    <Route
-                        path={HOME}
-                        component={() => {
-                            if (trained) {
-                                return <HomeView />
-                            }
-                            return <p>Entrenando...</p>
-                        }}
-                        exact
-                    />
+                    {
+                        <Route
+                            path={HOME}
+                            component={() => {
+                                if (trained) {
+                                    return <HomeView />
+                                }
+                                return <LoadingView />
+                            }}
+                            exact
+                        />
+                    }
                     <Route path={EYES} component={EyesView} exact />
                     <Route path={NOT_FOUND} component={NotFoundView} exact />
                     <Redirect from='*' to={NOT_FOUND} />
