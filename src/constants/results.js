@@ -3,7 +3,7 @@ const INIT = 'Probablemente usted posee'
 const MYOPIA = 'Miopía'
 const HYPEROPIA = 'Hipermetropía'
 const ASTIGMATISM = 'Astigmatismo'
-const NORMAL = 'un ojo normal'
+const NORMAL = 'Normal'
 
 const MYOPIA_CHARACTERISTICS = `Características de la ${MYOPIA}.`
 const HYPEROPIA_CHARACTERISTICS = `la visión cercana de los objetos se torna borroso o distorcionado 
@@ -62,5 +62,17 @@ export const MOM_DAD_NORMAL = { value: NORMAL, text: 'No padece ningún problema
 export const MOM_DAD_MYOPIA = { value: MYOPIA, text: MYOPIA }
 export const MOM_DAD_HYPEROPIA = { value: HYPEROPIA, text: HYPEROPIA }
 export const MOM_DAD_ASTIGMATISM = { value: ASTIGMATISM, text: ASTIGMATISM }
+
+export const getProblemArray = (momProblem, dadProblem) => {
+    let problemArray = []
+    momProblem === MYOPIA ? problemArray.push(1) : problemArray.push(0)
+    dadProblem === MYOPIA ? problemArray.push(1) : problemArray.push(0)
+    momProblem === HYPEROPIA ? problemArray.push(1) : problemArray.push(0)
+    dadProblem === HYPEROPIA ? problemArray.push(1) : problemArray.push(0)
+    momProblem === ASTIGMATISM ? problemArray.push(1) : problemArray.push(0)
+    dadProblem === ASTIGMATISM ? problemArray.push(1) : problemArray.push(0)
+
+    return problemArray
+}
 
 export default RESULTS

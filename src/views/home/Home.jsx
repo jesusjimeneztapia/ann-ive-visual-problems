@@ -22,13 +22,6 @@ const Home = ({ result, getResult, getDefaultResult }) => {
     const [blurredVisionCloseUp, setBlurredVisionCloseUp] = useState(0)
     const [headache, setHeadache] = useState(0)
     const [eyeStrain, setEyeStrain] = useState(0)
-    const [momMyopia, setMomMyopia] = useState(0)
-    const [dadMyopia, setDadMyopia] = useState(0)
-    const [momHyperopia, setMomHyperopia] = useState(0)
-    const [dadHyperopia, setDadHyperopia] = useState(0)
-    const [momAstigmatism, setMomAstigmatism] = useState(0)
-    const [dadAstigmatism, setDadAstigmatism] = useState(0)
-
     const [mom, setMom] = useState(MOM_DAD_NORMAL.value)
     const [dad, setDad] = useState(MOM_DAD_NORMAL.value)
 
@@ -46,12 +39,6 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 setBlurredVisionCloseUp(0)
                 setHeadache(0)
                 setEyeStrain(0)
-                setMomMyopia(0)
-                setDadMyopia(0)
-                setMomHyperopia(0)
-                setDadHyperopia(0)
-                setMomAstigmatism(0)
-                setDadAstigmatism(0)
                 setMom(MOM_DAD_NORMAL.value)
                 setDad(MOM_DAD_NORMAL.value)
                 getDefaultResult()
@@ -105,16 +92,9 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 blurredVisionCloseUp,
                 headache,
                 eyeStrain,
-                momMyopia,
-                dadMyopia,
-                momHyperopia,
-                dadHyperopia,
-                momAstigmatism,
-                dadAstigmatism,
                 mom,
                 dad,
             }
-            console.log(data)
             const index = await predict(data)
             getResult(index)
             setShowPopup(true)
@@ -167,42 +147,6 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                                 label='Fatiga visual'
                                 setValue={setEyeStrain}
                                 value={eyeStrain}
-                            />
-                            <Checkbox
-                                id='mom-myopia'
-                                label='Mamá con miopía'
-                                setValue={setMomMyopia}
-                                value={momMyopia}
-                            />
-                            <Checkbox
-                                id='dad-myopia'
-                                label='Papá con miopía'
-                                setValue={setDadMyopia}
-                                value={dadMyopia}
-                            />
-                            <Checkbox
-                                id='mom-hyperopia'
-                                label='Mamá con hipermetropía'
-                                setValue={setMomHyperopia}
-                                value={momHyperopia}
-                            />
-                            <Checkbox
-                                id='dad-hyperopia'
-                                label='Papá con hipermetropía'
-                                setValue={setDadHyperopia}
-                                value={dadHyperopia}
-                            />
-                            <Checkbox
-                                id='mom-astigmatism'
-                                label='Mamá con astigmatismo'
-                                setValue={setMomAstigmatism}
-                                value={momAstigmatism}
-                            />
-                            <Checkbox
-                                id='dad-astigmatism'
-                                label='Papá con astigmatismo'
-                                setValue={setDadAstigmatism}
-                                value={dadAstigmatism}
                             />
                             <Select
                                 label='Seleccione el problema visual que padece tu madre'

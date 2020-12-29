@@ -6,6 +6,8 @@
     border-bottom: 1px solid $border-color;
 
     label {
+        color: $blue-color;
+
         @media #{$information-mobile} {
             margin-bottom: 0.8em;
         }
