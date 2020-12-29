@@ -1,0 +1,183 @@
+@import '../../styles/styles.scss';
+
+.eyes {
+    margin: 0;
+    display: grid;
+
+    @media #{$information-mobile} {
+        background: linear-gradient(
+            to left,
+            $light-gray-color,
+            $blue-color,
+            $light-gray-color
+        );
+        padding: 2em;
+        min-height: 68vh;
+    }
+    @media #{$information-tablet} {
+        background: radial-gradient($blue-color, $light-gray-color);
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1em;
+        min-height: 64vh;
+    }
+    @media #{$information-desktop} {
+        background: linear-gradient(
+            to bottom,
+            $light-gray-color,
+            $blue-color,
+            $light-gray-color
+        );
+        grid-template-columns: repeat(4, 1fr);
+        padding: 1em;
+        min-height: 50vh;
+    }
+}
+
+.eye-section {
+    margin: auto;
+    text-align: center;
+
+    h4 {
+        color: $dark-blue-color;
+    }
+}
+
+.eye-container {
+    perspective: 1024px;
+    perspective-origin: 0px 0px;
+    border-radius: 50%;
+    border: 1px solid $border-color;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 96%;
+        height: 96%;
+        top: 2%;
+        left: 2%;
+        border-radius: 50%;
+
+        box-shadow: 4px 4px 64px rgba(0, 0, 0, 0.6);
+        filter: blur(8px);
+
+        animation: eyeShadow 4s infinite linear;
+
+        @keyframes eyeShadow {
+            0% {
+                width: 96%;
+                height: 96%;
+                top: 2%;
+                left: 2%;
+            }
+            25% {
+                width: 88%;
+                height: 88%;
+                top: 6%;
+                left: 10%;
+            }
+            75% {
+                width: 88%;
+                height: 88%;
+                top: 6%;
+                left: 2%;
+            }
+            100% {
+                width: 96%;
+                height: 96%;
+                top: 2%;
+                left: 2%;
+            }
+        }
+    }
+}
+
+.eye {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+
+    animation: turn 8s infinite linear;
+
+    &-side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ccc;
+    }
+
+    #one {
+        background-color: #ccc;
+        background-image: url('../../assets/images/pupil.png');
+        background-position: center center;
+        background-size: 96px;
+        background-repeat: no-repeat;
+        transform: translateZ(100px);
+    }
+    #two {
+        background-color: #ccc;
+        transform: translateX(100px) rotateY(90deg);
+    }
+    #three {
+        background-color: #ccc;
+        background-image: url('../../assets/images/pupil.png');
+        background-position: center center;
+        background-size: 96px;
+        background-repeat: no-repeat;
+        transform: translateZ(-100px) rotateY(180deg);
+    }
+    #four {
+        background-color: #ccc;
+        transform: translateX(-100px) rotateY(90deg);
+    }
+
+    &.myopic {
+        height: 180px;
+    }
+    &.hyperopic {
+        height: 180px;
+    }
+    &.astigmatic,
+    &.hyperopic {
+        width: 180px;
+
+        #one {
+            transform: translateZ(90px);
+        }
+        #two {
+            transform: translateX(90px) rotateY(90deg);
+        }
+        #three {
+            transform: translateZ(-90px);
+        }
+        #four {
+            transform: translateX(-90px) rotateY(90deg);
+        }
+    }
+
+    @keyframes turn {
+        from {
+            transform: rotateY(0deg);
+        }
+        to {
+            transform: rotateY(360deg);
+        }
+    }
+}
+
+.display-none {
+    display: none;
+}
+
+.center-normal {
+    @media #{$information-desktop} {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+}
+.center-problem {
+    @media #{$information-desktop} {
+        grid-area: 1 / 3 / 2 / 4;
+    }
+}
