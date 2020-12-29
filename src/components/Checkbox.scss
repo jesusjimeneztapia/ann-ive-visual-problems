@@ -1,0 +1,78 @@
+@import '../styles/styles.scss';
+
+.checkbox {
+    font-family: sans-serif;
+    border-bottom: 1px solid $border-color;
+
+    input {
+        display: none;
+
+        &:checked + label > span {
+            border: 1px solid $dark-blue-color;
+            background: url('../assets/images/check.svg'), $dark-blue-color;
+            background: url('../assets/images/check.svg'),
+                linear-gradient(
+                    135deg,
+                    $light-gray-color 4%,
+                    $blue-color,
+                    $dark-blue-color
+                );
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            animation-name: checked;
+            animation-duration: 0.2s;
+        }
+    }
+
+    &-label {
+        display: flex;
+        align-items: center;
+
+        p {
+            font-weight: 400;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            @media #{$information-mobile} {
+                margin: 0 0 0 1em;
+            }
+            @media #{$information-tablet} {
+                margin: 0 0 0 1em;
+            }
+            @media #{$information-desktop} {
+                margin: 0 0 0 1.2em;
+            }
+        }
+
+        .check {
+            position: relative;
+            padding: 0.7em;
+            border: 1px solid $blue-color;
+            border-radius: 50%;
+
+            &:hover {
+                cursor: pointer;
+                border: 1px solid $dark-blue-color;
+            }
+        }
+
+        @media #{$information-mobile} {
+            padding: 0.8em 1em;
+        }
+        @media #{$information-tablet} {
+            padding: 1em 1.2em;
+        }
+        @media #{$information-desktop} {
+            padding: 1.2em;
+        }
+    }
+}
+
+@keyframes checked {
+    0% {
+        transform: rotate(45deg);
+    }
+}

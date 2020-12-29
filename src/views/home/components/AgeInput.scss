@@ -1,0 +1,66 @@
+@import '../../../styles/styles.scss';
+
+.age {
+    font-family: sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+
+    &-input {
+        text-align: center;
+        border-radius: 0.2em;
+        border: 1px solid $border-color;
+        background-color: $light-color;
+        caret-color: $dark-blue-color;
+
+        &.invalid {
+            border: 2px solid $danger-color;
+            background-image: url('../../../assets/images/warning.svg');
+            background-repeat: no-repeat;
+            background-position: calc(100% - 1em) center;
+
+            &:hover {
+                box-shadow: 0 0 8px $danger-color;
+            }
+        }
+    }
+
+    &-label {
+        span {
+            font-weight: 700;
+            color: $danger-color;
+        }
+    }
+    &-information {
+        font-style: italic;
+        font-weight: 700;
+        text-align: right;
+        color: $blue-color;
+        grid-area: 2 / 1 / 3 / 3;
+
+        @media #{$information-mobile} {
+            padding-top: 0.4em;
+        }
+        @media #{$information-tablet} {
+            padding-top: 0.6em;
+        }
+        @media #{$information-desktop} {
+            padding-top: 0.8em;
+        }
+    }
+    &-invalid {
+        grid-area: 3 / 1 / 4 / 3;
+        color: $danger-color;
+    }
+
+    @media #{$information-mobile} {
+        padding: 0.8em 1em;
+    }
+    @media #{$information-tablet} {
+        padding: 1em 1.2em;
+    }
+    @media #{$information-desktop} {
+        padding: 1.2em;
+    }
+}

@@ -1,0 +1,147 @@
+@import '../styles/styles.scss';
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $light-gray-color;
+    border-radius: 0.4em;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.4),
+        8px 8px 16px rgba(0, 0, 0, 0.4);
+
+    &.down {
+        animation-name: downAnimation;
+        animation-duration: 2s;
+
+        @keyframes downAnimation {
+            0% {
+                opacity: 64%;
+                top: -100%;
+            }
+        }
+    }
+    &.up {
+        opacity: 0;
+        top: -100%;
+        z-index: -1;
+
+        animation-name: upAnimation;
+        animation-duration: 1s;
+
+        @keyframes upAnimation {
+            0% {
+                z-index: 1;
+                opacity: 100%;
+                top: 0;
+            }
+        }
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid $border-color;
+        padding-bottom: 0.4em;
+
+        svg {
+            path {
+                fill: rgba($dark-blue-color, 0.4);
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                path {
+                    fill: $dark-blue-color;
+                }
+            }
+        }
+
+        &-title {
+            color: $dark-blue-color;
+        }
+    }
+    &-description {
+        color: $dark-blue-color;
+
+        @media #{$information-mobile} {
+            padding-top: 0.4em;
+        }
+        @media #{$information-tablet} {
+            padding-top: 0.4em;
+        }
+        @media #{$information-desktop} {
+            padding-top: 0.4em;
+        }
+    }
+    &-link {
+        text-align: right;
+
+        a {
+            text-decoration: none;
+            color: $blue-color;
+            border: 1px solid $blue-color;
+
+            &:hover {
+                background-color: $blue-color;
+                color: $light-color;
+            }
+
+            @media #{$information-mobile} {
+                padding: 0.6em 1.2em;
+                border-radius: 1.6em;
+            }
+            @media #{$information-tablet} {
+                padding: 0.6em 1.4em;
+                border-radius: 1.8em;
+            }
+            @media #{$information-desktop} {
+                padding: 0.6em 1.8em;
+                border-radius: 1.8em;
+            }
+        }
+
+        @media #{$information-mobile} {
+            margin-top: 1.6em;
+            margin-bottom: 0.6em;
+        }
+        @media #{$information-tablet} {
+            margin-top: 2.8em;
+            margin-bottom: 0.8em;
+        }
+        @media #{$information-desktop} {
+            margin-top: 3.2em;
+            margin-bottom: 0.8em;
+        }
+    }
+
+    @media #{$information-mobile} {
+        width: 80%;
+        margin-top: 4em;
+        padding: 1em;
+    }
+    @media #{$information-tablet} {
+        width: 70%;
+        margin-top: 6em;
+        padding: 2em;
+    }
+    @media #{$information-desktop} {
+        width: 60%;
+        margin-top: 8em;
+        padding: 2.4em;
+    }
+}
+
+@keyframes animate {
+    0% {
+        opacity: 64%;
+        top: -100%;
+    }
+}

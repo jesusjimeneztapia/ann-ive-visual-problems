@@ -1,22 +1,77 @@
 import * as tf from '@tensorflow/tfjs'
+import { getProblemArray } from '../constants/results'
+import { inputs, outputs } from '../constants/trainingData'
 
-const example = () => {
-    // Define a model for linear regression.
-    const model = tf.sequential()
-    model.add(tf.layers.dense({ units: 1, inputShape: [1] }))
+let model
 
-    // Prepare the model for training: Specify the loss and the optimizer.
-    model.compile({ loss: 'meanSquaredError', optimizer: 'sgd' })
+const createModel = () => {
+    model = tf.sequential()
 
-    // Generate some synthetic data for training.
-    const xs = tf.tensor2d([1, 2, 3, 4], [4, 1])
-    const ys = tf.tensor2d([1, 3, 5, 7], [4, 1])
+    const hiddenConfig = {
+        units: 10,
+        inputShape: [12],
+        activation: 'sigmoid',
+    }
+    const hiddenLayer = tf.layers.dense(hiddenConfig)
+    model.add(hiddenLayer)
 
-    // Train the model using the data.
-    model.fit(xs, ys).then(() => {
-        // Use the model to do inference on a data point the model hasn't seen before:
-        model.predict(tf.tensor2d([5], [1, 1])).print()
-    })
+    const outputConfig = {
+        units: 4,
+        inputShape: [10],
+        activation: 'softmax',
+    }
+    const outputLayer = tf.layers.dense(outputConfig)
+    model.add(outputLayer)
+
+    const learningRate = 0.1
+    const optimizer = tf.train.adam(learningRate)
+    const compileConfig = {
+        optimizer: optimizer,
+        loss: 'categoricalCrossentropy',
+        metrics: ['accuracy'],
+    }
+    model.compile(compileConfig)
 }
 
-export default example
+const train = async (ok) => {
+    const trainConfig = {
+        epochs: 64,
+    }
+
+    const inputTensor = tf.tensor2d(inputs)
+    const outputTensor = tf.tensor2d(outputs)
+
+    const h = await model.fit(inputTensor, outputTensor, trainConfig)
+    ok(true)
+    console.log(h.history.loss[h.history.loss.length - 1])
+}
+
+const predict = async ({
+    age,
+    blurredVisionAfar,
+    blurredVisionCloseUp,
+    headache,
+    eyeStrain,
+    mom,
+    dad,
+}) => {
+    let data = []
+    if (age < 13) {
+        data = [1, 0]
+    } else {
+        data = [0, 1]
+    }
+    data = data.concat([blurredVisionAfar, blurredVisionCloseUp, headache, eyeStrain])
+    data = data.concat(getProblemArray(mom, dad))
+
+    const prediction = model.predict(tf.tensor2d([data]))
+    data = await prediction.data()
+    const max = Math.max(...data)
+    const index = data.indexOf(max)
+
+    return index
+}
+
+createModel()
+
+export { train, predict }

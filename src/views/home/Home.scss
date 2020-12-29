@@ -1,0 +1,167 @@
+@import '../../styles/styles.scss';
+
+.main {
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    background-color: $light-color;
+    border-radius: 2em;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), 4px 4px 8px rgba(0, 0, 0, 0.4),
+        8px 8px 16px rgba(0, 0, 0, 0.4);
+
+    &-title {
+        margin: 0;
+        text-align: center;
+        text-shadow: 1px 1px 1px #000000, 2px 2px 4px rgba(0, 0, 0, 0.8);
+        letter-spacing: 1px;
+
+        @media #{$information-mobile} {
+            padding: 0.8em 0;
+        }
+        @media #{$information-tablet} {
+            padding: 1em 0;
+        }
+        @media #{$information-desktop} {
+            padding: 1.2em 0;
+        }
+    }
+    &-article {
+        &-title {
+            margin: 0;
+            color: $blue-color;
+
+            @media #{$information-mobile} {
+                padding: 1em 1em 0 1em;
+            }
+            @media #{$information-tablet} {
+                padding: 1em 1em 0 1em;
+            }
+            @media #{$information-desktop} {
+                padding: 1.2em 1em 0 1em;
+            }
+        }
+    }
+    &-submit {
+        display: flex;
+        justify-content: center;
+
+        &-button {
+            border-radius: 0.8em;
+            font-family: sans-serif;
+            font-weight: 600;
+            color: $light-gray-color;
+            border: 1px solid $blue-color;
+
+            background-color: $dark-blue-color;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.4),
+                4px 4px 8px rgba(0, 0, 0, 0.4);
+
+            &:hover {
+                cursor: pointer;
+                color: $light-color;
+            }
+
+            @media #{$information-mobile} {
+                padding: 0.4em 0.8em;
+            }
+            @media #{$information-tablet} {
+                padding: 0.6em 1em;
+            }
+            @media #{$information-desktop} {
+                padding: 0.6em 1em;
+            }
+        }
+
+        @media #{$information-mobile} {
+            padding: 0.8em 0;
+        }
+        @media #{$information-tablet} {
+            padding: 1em 0;
+        }
+        @media #{$information-desktop} {
+            padding: 1.2em 0;
+        }
+    }
+
+    @media #{$information-mobile} {
+        margin: 2em;
+        width: 90%;
+    }
+    @media #{$information-tablet} {
+        margin: 2.2em;
+        width: 80%;
+        max-width: 512px;
+    }
+    @media #{$information-desktop} {
+        margin: 2.4em;
+        width: 600px;
+    }
+}
+
+.blur {
+    filter: blur(2px);
+
+    animation-name: blurAnimation;
+    animation-duration: 2s;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.64);
+        mix-blend-mode: color;
+
+        animation-name: opacity0;
+        animation-duration: 2s;
+    }
+
+    @keyframes blurAnimation {
+        0% {
+            filter: none;
+        }
+    }
+    @keyframes opacity0 {
+        0% {
+            opacity: 0;
+        }
+    }
+}
+
+.no-blur {
+    animation-name: noBlurAnimation;
+    animation-duration: 1s;
+
+    &::after {
+        content: '';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.64);
+        mix-blend-mode: color;
+        z-index: -1;
+
+        animation-name: opacity100;
+        animation-duration: 1s;
+    }
+
+    @keyframes noBlurAnimation {
+        0% {
+            filter: blur(2px);
+        }
+    }
+    @keyframes opacity100 {
+        0% {
+            opacity: 100;
+            display: block;
+        }
+    }
+}

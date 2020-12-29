@@ -1,27 +1,44 @@
-import logo from './logo.svg'
 import './App.scss'
-
-import { example } from './utils'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import store from './store'
+import HomeView from './views/home'
+import EyesView from './views/eyes'
+import NotFoundView from './views/not-found'
+import LoadingView from './views/loading'
+import { HOME, EYES, NOT_FOUND } from './constants/routeNames'
+import { train } from './utils'
+import { useEffect, useState } from 'react'
 
 const App = () => {
-    example()
+    const [trained, setTrained] = useState(false)
+    useEffect(() => {
+        if (!trained) {
+            train(setTrained)
+        }
+    }, [trained])
     return (
-        <div className='App'>
-            <header className='App-header'>
-                <img src={logo} className='App-logo' alt='logo' />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className='App-link'
-                    href='https://reactjs.org'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <Provider store={store}>
+            <Router>
+                <Switch>
+                    {
+                        <Route
+                            path={HOME}
+                            component={() => {
+                                if (trained) {
+                                    return <HomeView />
+                                }
+                                return <LoadingView />
+                            }}
+                            exact
+                        />
+                    }
+                    <Route path={EYES} component={EyesView} exact />
+                    <Route path={NOT_FOUND} component={NotFoundView} exact />
+                    <Redirect from='*' to={NOT_FOUND} />
+                </Switch>
+            </Router>
+        </Provider>
     )
 }
 
