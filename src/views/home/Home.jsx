@@ -5,10 +5,16 @@ import '../../styles/styles.scss'
 
 import Header from '../../components/Header'
 import { AgeInput } from './components'
-import { Alert, Checkbox, Popup } from '../../components'
+import { Alert, Checkbox, Popup, Select } from '../../components'
 
 import getResult, { getDefaultResult } from '../../store/actions/getResult'
 import { predict } from '../../utils'
+import {
+    MOM_DAD_ASTIGMATISM,
+    MOM_DAD_HYPEROPIA,
+    MOM_DAD_MYOPIA,
+    MOM_DAD_NORMAL,
+} from '../../constants/results'
 
 const Home = ({ result, getResult, getDefaultResult }) => {
     const [age, setAge] = useState(0)
@@ -16,12 +22,9 @@ const Home = ({ result, getResult, getDefaultResult }) => {
     const [blurredVisionCloseUp, setBlurredVisionCloseUp] = useState(0)
     const [headache, setHeadache] = useState(0)
     const [eyeStrain, setEyeStrain] = useState(0)
-    const [momMyopia, setMomMyopia] = useState(0)
-    const [dadMyopia, setDadMyopia] = useState(0)
-    const [momHyperopia, setMomHyperopia] = useState(0)
-    const [dadHyperopia, setDadHyperopia] = useState(0)
-    const [momAstigmatism, setMomAstigmatism] = useState(0)
-    const [dadAstigmatism, setDadAstigmatism] = useState(0)
+    const [mom, setMom] = useState(MOM_DAD_NORMAL.value)
+    const [dad, setDad] = useState(MOM_DAD_NORMAL.value)
+
     const [showAlert, setShowAlert] = useState(false)
     const [emptyOldField, setEmptyOldField] = useState(false)
     const [showPopup, setShowPopup] = useState(false)
@@ -36,12 +39,8 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 setBlurredVisionCloseUp(0)
                 setHeadache(0)
                 setEyeStrain(0)
-                setMomMyopia(0)
-                setDadMyopia(0)
-                setMomHyperopia(0)
-                setDadHyperopia(0)
-                setMomAstigmatism(0)
-                setDadAstigmatism(0)
+                setMom(MOM_DAD_NORMAL.value)
+                setDad(MOM_DAD_NORMAL.value)
                 getDefaultResult()
             }, 800)
         }
@@ -93,12 +92,8 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 blurredVisionCloseUp,
                 headache,
                 eyeStrain,
-                momMyopia,
-                dadMyopia,
-                momHyperopia,
-                dadHyperopia,
-                momAstigmatism,
-                dadAstigmatism,
+                mom,
+                dad,
             }
             const index = await predict(data)
             getResult(index)
@@ -115,10 +110,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 onWheel={setPopup}
                 onTouchMove={setPopup}
             >
-                <Header
-                    title='Diseño de un entorno virtual inteligente para la detección de problemas
-                visuales'
-                />
+                <Header title='Detección de problemas visuales' />
                 <main className='main'>
                     <form className='form' onSubmit={submit}>
                         <h2 className='form-title h2'>Anamnesis</h2>
@@ -130,7 +122,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                         />
                         <article className='form-article'>
                             <h3 className='form-article-title h4'>
-                                Seleccione las opciones que padece:
+                                Seleccione los síntomas que padece:
                             </h3>
                             <Checkbox
                                 id='blurred-vision-afar'
@@ -156,41 +148,27 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                                 setValue={setEyeStrain}
                                 value={eyeStrain}
                             />
-                            <Checkbox
-                                id='mom-myopia'
-                                label='Mamá con miopía'
-                                setValue={setMomMyopia}
-                                value={momMyopia}
+                            <Select
+                                label='Seleccione el problema visual que padece tu madre'
+                                options={[
+                                    MOM_DAD_NORMAL,
+                                    MOM_DAD_MYOPIA,
+                                    MOM_DAD_HYPEROPIA,
+                                    MOM_DAD_ASTIGMATISM,
+                                ]}
+                                handleChange={setMom}
+                                value={mom}
                             />
-                            <Checkbox
-                                id='dad-myopia'
-                                label='Papá con miopía'
-                                setValue={setDadMyopia}
-                                value={dadMyopia}
-                            />
-                            <Checkbox
-                                id='mom-hyperopia'
-                                label='Mamá con hipermetropía'
-                                setValue={setMomHyperopia}
-                                value={momHyperopia}
-                            />
-                            <Checkbox
-                                id='dad-hyperopia'
-                                label='Papá con hipermetropía'
-                                setValue={setDadHyperopia}
-                                value={dadHyperopia}
-                            />
-                            <Checkbox
-                                id='mom-astigmatism'
-                                label='Mamá con astigmatismo'
-                                setValue={setMomAstigmatism}
-                                value={momAstigmatism}
-                            />
-                            <Checkbox
-                                id='dad-astigmatism'
-                                label='Papá con astigmatismo'
-                                setValue={setDadAstigmatism}
-                                value={dadAstigmatism}
+                            <Select
+                                label='Seleccione el problema visual que padece tu padre'
+                                options={[
+                                    MOM_DAD_NORMAL,
+                                    MOM_DAD_MYOPIA,
+                                    MOM_DAD_HYPEROPIA,
+                                    MOM_DAD_ASTIGMATISM,
+                                ]}
+                                handleChange={setDad}
+                                value={dad}
                             />
                         </article>
                         <div className='form-submit'>

@@ -1,4 +1,5 @@
 import * as tf from '@tensorflow/tfjs'
+import { getProblemArray } from '../constants/results'
 import { inputs, outputs } from '../constants/trainingData'
 
 let model
@@ -51,12 +52,8 @@ const predict = async ({
     blurredVisionCloseUp,
     headache,
     eyeStrain,
-    momMyopia,
-    dadMyopia,
-    momHyperopia,
-    dadHyperopia,
-    momAstigmatism,
-    dadAstigmatism,
+    mom,
+    dad,
 }) => {
     let data = []
     if (age < 13) {
@@ -64,18 +61,8 @@ const predict = async ({
     } else {
         data = [0, 1]
     }
-    data = data.concat([
-        blurredVisionAfar,
-        blurredVisionCloseUp,
-        headache,
-        eyeStrain,
-        momMyopia,
-        dadMyopia,
-        momHyperopia,
-        dadHyperopia,
-        momAstigmatism,
-        dadAstigmatism,
-    ])
+    data = data.concat([blurredVisionAfar, blurredVisionCloseUp, headache, eyeStrain])
+    data = data.concat(getProblemArray(mom, dad))
 
     const prediction = model.predict(tf.tensor2d([data]))
     data = await prediction.data()
