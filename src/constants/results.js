@@ -58,4 +58,9 @@ const RESULTS = [
     },
 ]
 
+export const MOM_DAD_NORMAL = { value: NORMAL, text: 'No padece ningún problema visual' }
+export const MOM_DAD_MYOPIA = { value: MYOPIA, text: MYOPIA }
+export const MOM_DAD_HYPEROPIA = { value: HYPEROPIA, text: HYPEROPIA }
+export const MOM_DAD_ASTIGMATISM = { value: ASTIGMATISM, text: ASTIGMATISM }
+
 export default RESULTS

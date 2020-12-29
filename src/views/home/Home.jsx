@@ -9,6 +9,12 @@ import { Alert, Checkbox, Popup, Select } from '../../components'
 
 import getResult, { getDefaultResult } from '../../store/actions/getResult'
 import { predict } from '../../utils'
+import {
+    MOM_DAD_ASTIGMATISM,
+    MOM_DAD_HYPEROPIA,
+    MOM_DAD_MYOPIA,
+    MOM_DAD_NORMAL,
+} from '../../constants/results'
 
 const Home = ({ result, getResult, getDefaultResult }) => {
     const [age, setAge] = useState(0)
@@ -22,6 +28,10 @@ const Home = ({ result, getResult, getDefaultResult }) => {
     const [dadHyperopia, setDadHyperopia] = useState(0)
     const [momAstigmatism, setMomAstigmatism] = useState(0)
     const [dadAstigmatism, setDadAstigmatism] = useState(0)
+
+    const [mom, setMom] = useState(MOM_DAD_NORMAL.value)
+    const [dad, setDad] = useState(MOM_DAD_NORMAL.value)
+
     const [showAlert, setShowAlert] = useState(false)
     const [emptyOldField, setEmptyOldField] = useState(false)
     const [showPopup, setShowPopup] = useState(false)
@@ -42,6 +52,8 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 setDadHyperopia(0)
                 setMomAstigmatism(0)
                 setDadAstigmatism(0)
+                setMom(MOM_DAD_NORMAL.value)
+                setDad(MOM_DAD_NORMAL.value)
                 getDefaultResult()
             }, 800)
         }
@@ -99,7 +111,10 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 dadHyperopia,
                 momAstigmatism,
                 dadAstigmatism,
+                mom,
+                dad,
             }
+            console.log(data)
             const index = await predict(data)
             getResult(index)
             setShowPopup(true)
@@ -115,10 +130,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                 onWheel={setPopup}
                 onTouchMove={setPopup}
             >
-                <Header
-                    title='Diseño de un entorno virtual inteligente para la detección de problemas
-                visuales'
-                />
+                <Header title='Detección de problemas visuales' />
                 <main className='main'>
                     <form className='form' onSubmit={submit}>
                         <h2 className='form-title h2'>Anamnesis</h2>
@@ -130,7 +142,7 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                         />
                         <article className='form-article'>
                             <h3 className='form-article-title h4'>
-                                Seleccione las opciones que padece:
+                                Seleccione los síntomas que padece:
                             </h3>
                             <Checkbox
                                 id='blurred-vision-afar'
@@ -192,7 +204,28 @@ const Home = ({ result, getResult, getDefaultResult }) => {
                                 setValue={setDadAstigmatism}
                                 value={dadAstigmatism}
                             />
-                            <Select />
+                            <Select
+                                label='Seleccione el problema visual que padece tu madre'
+                                options={[
+                                    MOM_DAD_NORMAL,
+                                    MOM_DAD_MYOPIA,
+                                    MOM_DAD_HYPEROPIA,
+                                    MOM_DAD_ASTIGMATISM,
+                                ]}
+                                handleChange={setMom}
+                                value={mom}
+                            />
+                            <Select
+                                label='Seleccione el problema visual que padece tu padre'
+                                options={[
+                                    MOM_DAD_NORMAL,
+                                    MOM_DAD_MYOPIA,
+                                    MOM_DAD_HYPEROPIA,
+                                    MOM_DAD_ASTIGMATISM,
+                                ]}
+                                handleChange={setDad}
+                                value={dad}
+                            />
                         </article>
                         <div className='form-submit'>
                             <button className='form-submit-button' type='submit'>
